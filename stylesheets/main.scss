@@ -1,5 +1,16 @@
-//General configuration
-
+/*General configuration*/
+//Fonts:
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+*{
+  font-family: Roboto;
+}
+$font-light: 300;
+$font-regular: 400;
+$font-bold: 700;
+//Colors:
+$maincolor: #111;
+$addcolor: #707070;
+$orderbtncolor: #46CB18;
 
 //Parts
 @import "parts/base";
