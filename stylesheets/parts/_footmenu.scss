@@ -6,9 +6,6 @@
   .exit {
     display: inline;
     width: 50%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     background-color: $maincolor;
     text-align: center;
@@ -21,9 +18,6 @@
   .order {
     display: inline;
     width: 50%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     background-color: $orderbtncolor;
     text-align: center;
@@ -31,5 +25,9 @@
     color: white;
     font-weight: $font-bold;
     font-size: 17px;
+  }
+
+  @media (min-width: 960px) {
+    display: none;
   }
 }
