@@ -1,0 +1,33 @@
+.footmenu {
+  display: flex;
+  width: 100%;
+  height: 8vh;
+
+  .exit {
+    display: inline;
+    width: 50%;
+    box-sizing: border-box;
+    background-color: $maincolor;
+    text-align: center;
+    border: none;
+    color: white;
+    font-weight: $font-bold;
+    font-size: 17px;
+  }
+
+  .order {
+    display: inline;
+    width: 50%;
+    box-sizing: border-box;
+    background-color: $orderbtncolor;
+    text-align: center;
+    border: none;
+    color: white;
+    font-weight: $font-bold;
+    font-size: 17px;
+  }
+
+  @media (min-width: 960px) {
+    display: none;
+  }
+}
