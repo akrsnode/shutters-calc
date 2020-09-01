@@ -16,24 +16,21 @@ const showPrice = (val, add) => {
 const addEraseBtn = (element) => {
     element.id = 'erase';
     element.classList += ' erase';
+    element.textContent = 'Usuń';
     element.addEventListener('click', () => {
-        showPrice(element.parentNode.id, false)
+        showPrice(element.parentNode.id, false);
         element.parentNode.remove();
     })
 }
 //Form validation
 const validateForm = (e) => {
     let data = e.target.parentElement;
-    if(data[0].value !== '' && data[1].value != '' && data[2].value != '') return false;
-    // return false;
+    if(data[0].value > 0 && data[1].value > 0 && data[2].value > 0) return false;
     return true;
-    //to stop return true 
 }
 
 
 btn.addEventListener('click', (e) => {
-    //e.preventDefault();
-    //console.log(e.target.parentElement);
     if(validateForm(e)) return;
     let itemPrice = calcPrice(form[0].value, form[1].value, form[2].value);
     showPrice(itemPrice, true);
