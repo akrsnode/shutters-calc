@@ -85,15 +85,19 @@
   .quantity {
     width: 35px;
   }
+  &:nth-child(2) {
+    border-top: 3px solid #111;
+  }
 }
 
 .summary {
   font-weight: $font-bold;
-  float: right;
+  display: flex;
+  flex-direction: row-reverse;
 
   .price {
     display: inline-block;
-    width: 75px;
+    padding-left: 10px;
     font-size: 30px;
     text-align: right;
   }
