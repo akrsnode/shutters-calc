@@ -28,6 +28,14 @@ const validateForm = (e) => {
     if(data[0].value > 0 && data[1].value > 0 && data[2].value > 0) return false;
     return true;
 }
+//Change element
+const changeElement = (e) => {
+    let parent = e.target.parentElement;
+    showPrice(parent.id, false)
+    let itemPrice = calcPrice(parent[0].value, parent[1].value, parent[2].value);
+    parent.id = itemPrice;
+    showPrice(itemPrice, true);    
+}
 
 
 btn.addEventListener('click', (e) => {
@@ -36,7 +44,9 @@ btn.addEventListener('click', (e) => {
     showPrice(itemPrice, true);
     let newForm = form.cloneNode(true);
     newForm.id = itemPrice;
-    addEraseBtn(newForm[3])
+    addEraseBtn(newForm[3]);
     document.getElementById('elementList').appendChild(newForm);
     [...form].forEach(element => element.value = '');
+    let inputs = [...document.querySelectorAll('input')];
+    inputs.slice(3).forEach(element => element.addEventListener('change', changeElement))
 })
