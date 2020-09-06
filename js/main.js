@@ -25,6 +25,13 @@ const addEraseBtn = (element) => {
 //Form validation
 const validateForm = (e) => {
     let data = e.target.parentElement;
+    for(let i = 0; i < 3; i++) {
+        if(data[i].value <= 0) {
+            form[i].classList.add('errorborder');
+        } else {
+            form[i].classList.remove('errorborder');
+        }
+    }
     if(data[0].value > 0 && data[1].value > 0 && data[2].value > 0) return false;
     return true;
 }
