@@ -3,6 +3,7 @@
  let summary = document.getElementsByClassName('price');
  
  let price = 0;
+ let validationToggle = false;
 
 //Price calculation
 const calcPrice = (width, height, quantity) => {
@@ -39,11 +40,14 @@ const validateForm = (e) => {
 const changeElement = (e) => {
     let parent = e.target.parentElement;
     showPrice(parent.id, false)
-    let itemPrice = calcPrice(parent[0].value, parent[1].value, parent[2].value);
+    let itemPrice = calcPrice(parent[0].value, parent[1].value, Math.floor(parent[2].value));
     parent.id = itemPrice;
     showPrice(itemPrice, true);    
 }
-
+//Floor quantity value
+const floorQuantity = (e) => {
+    e.target.value = Math.floor(e.target.value);
+}
 
 btn.addEventListener('click', (e) => {
     if(validateForm(e)) return;
