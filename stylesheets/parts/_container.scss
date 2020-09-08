@@ -6,7 +6,6 @@
 }
 
 .help {
-  display: none;
   position: absolute;
   z-index: 1;
   height: 100vh;
@@ -16,6 +15,18 @@
   border: 4px solid $addcolor;
   padding: 20px;
   color: $addcolor;
+  p {
+    text-align: center;
+  }
+  svg {
+    display: block;
+    margin: 0 auto;
+  }
+  #closebtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
 }
 
 .container {

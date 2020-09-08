@@ -1,4 +1,5 @@
  let btn = document.querySelector('form #addbtn');
+ let helpBtns = [...document.querySelectorAll('#helpbtn, #closebtn')];
  let form = document.querySelector('form');
  let summary = document.getElementsByClassName('price');
  
@@ -61,3 +62,7 @@ btn.addEventListener('click', (e) => {
     let inputs = [...document.querySelectorAll('input')];
     inputs.slice(3).forEach(element => element.addEventListener('change', changeElement))
 })
+
+helpBtns.forEach(element => element.addEventListener('click', () => {
+    document.getElementById('help').classList.toggle('nodisplay');
+}))

@@ -2,3 +2,13 @@ body{
   margin: 0;
   height: 100vh;
 }
+
+//Additional CSS Classes
+.nodisplay {
+  display: none;
+}
+.hyperlink {
+  text-decoration: none;
+  font-weight: 700;
+  color: $addcolor;
+}
