@@ -4,7 +4,6 @@
  let summary = document.getElementsByClassName('price');
  
  let price = 0;
- let validationToggle = false;
 
 //Price calculation
 const calcPrice = (width, height, quantity) => {
@@ -56,6 +55,7 @@ btn.addEventListener('click', (e) => {
     showPrice(itemPrice, true);
     let newForm = form.cloneNode(true);
     newForm.id = itemPrice;
+    newForm[0].tabIndex = '-1';
     addEraseBtn(newForm[3]);
     document.getElementById('elementList').appendChild(newForm);
     [...form].forEach(element => element.value = '');

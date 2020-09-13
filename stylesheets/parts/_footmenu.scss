@@ -15,16 +15,10 @@
     font-size: 17px;
   }
 
-  .order {
+  .order-mobile {
     display: inline;
     width: 50%;
     box-sizing: border-box;
-    background-color: $orderbtncolor;
-    text-align: center;
-    border: none;
-    color: white;
-    font-weight: $font-bold;
-    font-size: 17px;
   }
 
   @media (min-width: 960px) {
