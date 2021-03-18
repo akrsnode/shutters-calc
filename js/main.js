@@ -27,7 +27,8 @@ const addEraseBtn = (element) => {
 }
 //Form validation, return true when incorrect
 const validateForm = (e) => {
-    let data = e.target.parentElement.children;
+    const item = e.target.parentElement;
+    const data = e.target.parentElement.children;
     for(let i = 0; i < 4; i++) {
         if(data[i].value <= 0 && i != 1) {
             data[i].classList.add('errorborder');
@@ -35,16 +36,25 @@ const validateForm = (e) => {
             data[i].classList.remove('errorborder');
         }
     }
-    if(data[0].value > 0 && data[2].value > 0 && data[3].value > 0) return false;
-    return true;
+    if(data[0].value > 0 && data[2].value > 0 && data[3].value > 0) {
+        item.classList.remove("error")
+        return false;
+    } else {
+        item.classList.add("error")
+        return true;
+    }
 }
 
 
 //Change element
 const updateElement = (e) => {
-    if (validateForm(e)) return;
-
     const parent = e.target.parentElement;
+
+    if (validateForm(e)) {
+        showPrice(parent.id, false)
+        parent.id = 0;
+        return;
+    }
     const values = [parent.children[0].value, parent.children[2].value, Math.floor(parent.children[3].value)];
 
     showPrice(parent.id, false)
