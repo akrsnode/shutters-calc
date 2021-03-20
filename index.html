@@ -26,16 +26,18 @@
                 <a class="quantity row-1">Ilość</a>
                 <a class="addbtn row-1" id="helpbtn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 64 64"><defs><style>.aa,.dd{fill:white;}.aa{stroke:#707070;stroke-width:5px;}.bb{fill:#707070;font-size:50px;font-family:Roboto-Bold, Roboto;font-weight:700;}.cc{stroke:none;}</style></defs><g transform="translate(-138 -67)"><g class="aa" transform="translate(138 67)"><circle class="cc" cx="32" cy="32" r="32"/><circle class="dd" cx="32" cy="32" r="29.5"/></g><text class="bb" transform="translate(158 116)"><tspan x="0" y="0">?</tspan></text></g></svg></a>
             </div>
-            <form id="elementList" class="elementlist">
+            <form method="POST" name="frontyForm" action="fronty-form.php" id="elementList" class="elementlist">
                 <div id="0" class="element">
-                    <input id="width" class="width" type="number" min="" max="" step="0.001" placeholder="0.0m">
+                    <input id="width" name="width" class="width" type="number" min="" max="" step="0.001" placeholder="0.0m">
                     <svg class="cross" xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10">
                         <path id="Path_1" data-name="Path 1" d="M6.193-7.581l2.171-2.985H12.05l-3.674,4.9,3.829,5.1h-3.7l-2.3-3.142L3.915-.566H.205l3.829-5.1-3.662-4.9h3.7Z" transform="translate(-0.205 10.566)"/>
                     </svg>                      
-                    <input id="height" class="height" type="number" type="number" min="" max="" step="0.001" placeholder="0.0m">
-                    <input id="quantity" class="quantity" type="number" min="1" step="1" placeholder="0" onchange="floorQuantity(event)">
+                    <input id="height" name="height" class="height" type="number" type="number" min="" max="" step="0.001" placeholder="0.0m">
+                    <input id="quantity" name="quantity" class="quantity" type="number" min="1" step="1" placeholder="0" onchange="floorQuantity(event)">
                     <button id="addbtn" class="addbtn" type="button">Dodaj</button>
                 </div>
+                <input id="data" name="data" type="textarea" class="nodisplay">
+                <input id="order-num" name="order-num" type="textarea" class="nodisplay">
             </form>
         </div>
         <div class="fatline"></div>
@@ -59,5 +61,6 @@
         </button>
     </div>
     <script src="js/main.js"></script>
+    <script src="js/system.js"></script>
 </body>
 </html>
