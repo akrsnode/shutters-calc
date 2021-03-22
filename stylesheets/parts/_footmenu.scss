@@ -13,6 +13,10 @@
     color: white;
     font-weight: $font-bold;
     font-size: 17px;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   .order-mobile {

@@ -20,7 +20,8 @@ class Item {
   }
 
   calcValue() {
-    return (Math.floor((this.width * this.height * this.quantity * 350)/100)+1)*100;
+    var val = (this.width * this.height * this.quantity * 350);
+    return (Math.floor(val / 20) * 20) + (val % 20 > 0 ? 20 : 0);
   }
 
 }
@@ -30,7 +31,8 @@ class Order {
   constructor() {
       this.items = new Map();
       this.value = 0;
-      this.id = `${new Date().toLocaleDateString()}/${new Date().toLocaleTimeString()}/${Math.floor(Math.random()*1000000)}`
+      this.id = `${new Date().toLocaleDateString()}/${new Date().toLocaleTimeString()}/${Math.floor(Math.random()*1000000)}`;
+      this.status = "open";
   }
 
   addItem(item) {
@@ -43,6 +45,14 @@ class Order {
 
   editItem(id, height, width, quantity) {
       this.items.get(id*1).edit(height, width, quantity);
+  }
+
+  setStatus(status) {
+    this.status = status;
+  }
+
+  getStatus() {
+    return this.status;
   }
 
   getValue() {
@@ -62,7 +72,9 @@ class Order {
   }
 
   getSummary() {
+    this.calcValue();
     this.items = map_to_object(this.getItems());
+    this.setStatus("closed");
     return this;
   }
 
@@ -173,17 +185,36 @@ function map_to_object(map) {
 }
 
 submitFormBtns.forEach(e => e.addEventListener("click", () => {
+
   const inputs = document.querySelectorAll("form > div > input");
-  const items = document.querySelectorAll("form > div");
 
   if (inputs.length == 3) return alert("Aby złożyć zamówienie dodaj min. 1 front.");
   for (let i = 3; i < inputs.length; i++) {
-      if (inputs[i].value <= 0) return alert(`Nieprawidłowa wartość frontu!`);
+    if (inputs[i].value <= 0) return alert(`Nieprawidłowa wartość frontu!`);
+  }  
+
+  if (order.getStatus() == "open") {
+    document.getElementById("order-info").classList.remove("nodisplay");
+    order.setStatus("final")
+    
+    
+    document.querySelector(".exit").addEventListener("click", () => {
+      document.getElementById("order-info").classList.add("nodisplay");
+      order.setStatus("open");
+    })
+
+    return;
   }
 
+  if (order.getStatus() == "final") {
+    console.log('sttatus finalny');
+//todo validate form before sending 
 
-  document.getElementById("order-num").value = order.getId();
-  document.getElementById("data").value = JSON.stringify(order.getSummary());
-  document.querySelector("form").submit();
+    //final steps before sending a form
+    document.getElementById("order-num").value = order.getId();
+    document.getElementById("data").value = JSON.stringify(order.getSummary());
+    document.querySelector("form").submit();
+  }
+
 }));
 

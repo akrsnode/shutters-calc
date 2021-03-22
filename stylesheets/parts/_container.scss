@@ -182,7 +182,7 @@
     transform: translate(0, 0px);
   }
   &:hover {
-    background-color: $addcolor;
+    opacity: 0.7;
   }
   &:hover, &:focus {
     &:before {
@@ -193,6 +193,36 @@
       opacity: 1;
       transform: translate(0, 0);
     }
+  }
+}
+
+.order-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+
+  & > input, textarea {
+    margin-bottom: 10px;
+    padding: 10px 5px;
+    border: 1px solid $addcolor;
+    font-size: 15px;
+  }
+
+  & > .comment {
+    height: 30vh;
+  }
+
+  & > button {
+    outline: none;
+    background: none;
+    padding: 10px 5px;
+    border: none;
+    margin-bottom: 5px;
   }
 }
   

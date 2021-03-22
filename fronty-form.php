@@ -5,15 +5,12 @@ if(!isset($_POST['submit']))
 	//This page should not be accessed directly. Need to submit the form.
 	echo "Error: you need to submit the form!";
 }
-//Data from form
-// $name = $_POST['name'];
-// $visitor_email = $_POST['email'];
-// $topic = $_POST['topic'];
-// $message = $_POST['message'];
-$name = "Osoba zamawiająca";
-$visitor_email = 'vansmoe@hotmail.com';
+
+$name = $_POST['name'];
+$visitor_email = $_POST['email'];
 $data = $_POST['data'];
 $order_num = $_POST['order-num'];
+$comment = $_POST['add-info'];
 
 //Validate first
 if(empty($name)||empty($visitor_email))
@@ -27,16 +24,24 @@ if(IsInjected($visitor_email))
     exit;
 }
 
-$email_from = 'szafawawa@gmail.com';//<== update the email address
+$email_from = $visitor_email;//<== update the email address
 $email_subject = "Zamówienie nr. $order_num";
 $email_body = "$name: \n $data";
 
 $to = 'szafawawa@gmail.com';//<== update the email address
 $headers = 'Content-Type: text/html; charset=utf-8' . "\r\n";
 $headers .= "Reply-To: $visitor_email \r\n";
+
+$header_client = 'Content-Type: text/html; charset=utf-8' . "\r\n";
+$header_client .= "Reply-To: $to \r\n";
+
+
+
 //Send the email!
 $sent_mail = mail($to,$email_subject,$email_body,$headers);
-// mail($to,$email_subject,$email_body,$headers);
+
+//Send confirmatino to client
+mail($visitor_email,$email_subject,$email_body,$header_client);
 
 // Function to validate against any email injection attempts
 function IsInjected($str)
@@ -65,7 +70,7 @@ function IsInjected($str)
 
 if ($sent_mail)
 {
-    header("Location: sent.html");
+    header("Location: form-sent.html");
     exit;
 }
 

@@ -38,6 +38,13 @@
                 </div>
                 <input id="data" name="data" type="textarea" class="nodisplay">
                 <input id="order-num" name="order-num" type="textarea" class="nodisplay">
+                <div>
+                    <div id="order-info" class="order-info container nodisplay">
+                        <input name="name" type="text" placeholder="Imię i nazwisko" required>
+                        <input name="email" type="email" placeholder="Email" required>
+                        <textarea name="add-info" class="comment" placeholder="Komentarz do zamówienia..."></textarea>
+                    </div>    
+                </div>
             </form>
         </div>
         <div class="fatline"></div>
@@ -45,19 +52,19 @@
             <div>Razem*:<span class="price">0zł</span></div>
         </div>
         <div class="desktop-footer">
-            <a>*Wszystkie podane ceny są netto. Czas realizacji zamówienie to ok. 3 tygodnie.</a>
+            <a>*Czas realizacji zamówienie to ok. 3-4 tygodnie.</a>
             <button class="order" data-text="zamów" href="http://szafawawa.pl/kontakt/">
-                <span>Niedostępne</span>
+                <!-- <span>Niedostępne</span> -->
             </button>
         </div>
     </div>
     <div class="footer">
-        <a>*Czas realizacji zamówienie to ok. 3 tygodnie.</a>
+        <a>*Czas realizacji zamówienie to ok. 3-4 tygodnie.</a>
     </div>
     <div class="footmenu">
         <button class="exit" href="http://szafawawa.pl/">WYJŚCIE</button>
         <button class="order order-mobile" data-text="zamów" href="http://szafawawa.pl/kontakt/">
-            <span>Niedostępne</span>
+            <span>Kontynuuj</span>
         </button>
     </div>
     <script src="js/main.js"></script>
