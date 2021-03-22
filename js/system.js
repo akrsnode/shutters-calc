@@ -35,6 +35,10 @@ class Order {
       this.status = "open";
   }
 
+  calcValue() {
+    this.value = this.getValue();
+  }
+
   addItem(item) {
       this.items.set(item.getId(), item);
   }
@@ -88,6 +92,7 @@ const order = new Order();
 let btn = document.querySelector('form #addbtn');
 const submitFormBtns = document.querySelectorAll(".order"); 
 let summary = document.getElementsByClassName('price');
+const form = document.querySelector('form');
 
 
 //Form validation, return true when incorrect
@@ -195,11 +200,15 @@ submitFormBtns.forEach(e => e.addEventListener("click", () => {
 
   if (order.getStatus() == "open") {
     document.getElementById("order-info").classList.remove("nodisplay");
+    document.querySelector(".exit").classList.add("nodisplay");
+    document.querySelector(".back").classList.remove("nodisplay");
     order.setStatus("final")
     
     
-    document.querySelector(".exit").addEventListener("click", () => {
+    document.querySelector(".back").addEventListener("click", () => {
       document.getElementById("order-info").classList.add("nodisplay");
+      document.querySelector(".back").classList.add("nodisplay");
+      document.querySelector(".exit").classList.remove("nodisplay");
       order.setStatus("open");
     })
 
@@ -207,10 +216,7 @@ submitFormBtns.forEach(e => e.addEventListener("click", () => {
   }
 
   if (order.getStatus() == "final") {
-    console.log('sttatus finalny');
-//todo validate form before sending 
-
-    //final steps before sending a form
+    if (!form.checkValidity()) return;
     document.getElementById("order-num").value = order.getId();
     document.getElementById("data").value = JSON.stringify(order.getSummary());
     document.querySelector("form").submit();
