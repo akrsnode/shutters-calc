@@ -1,11 +1,15 @@
 body{
   margin: 0;
   height: 100vh;
+
+  @media (max-width: 960px) {
+    background-color: $maincolor;
+  }
 }
 
 //Additional CSS Classes
 .nodisplay {
-  display: none;
+  display: none !important;
 }
 .hyperlink {
   text-decoration: none;
@@ -14,4 +18,8 @@ body{
 }
 .error {
   background-color: rgba(223, 40, 0, 0.3);
+}
+
+.w-100 {
+  width: 100% !important;
 }

@@ -8,7 +8,7 @@
 .help {
   position: absolute;
   z-index: 1;
-  height: 100vh;
+  min-height: 100%;
   width: 100%;
   background-color: white;
   box-sizing: border-box;
@@ -30,16 +30,19 @@
 }
 
 .container {
+  position: relative;
   padding: 20px;
   border: 6px solid $maincolor;
   height: 92vh;
   box-sizing: border-box;
+  background: white;
 
   @media (min-width: 960px) {
     padding: 75px;
     margin: 0 auto;
     height: auto;
     display: table;
+    width: 650px;
   }
 
   h1 {
@@ -56,13 +59,13 @@
 }
 
 .listwrapper {
-  .width {
+  .height {
     grid-column: 1 / 2;
   }
   .cross {
     grid-column: 2 / 3;
   }
-  .height {
+  .width {
     grid-column: 3 / 4;
   }
   .quantity {
@@ -181,10 +184,8 @@
     opacity: 1;
     transform: translate(0, 0px);
   }
+
   &:hover {
-    background-color: $addcolor;
-  }
-  &:hover, &:focus {
     &:before {
       opacity: 0;
       transform: translate(0, 20px);
@@ -195,17 +196,49 @@
     }
   }
 }
+
+.order-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+
+  & > input, textarea {
+    margin-bottom: 10px;
+    padding: 10px 5px;
+    border: 1px solid $addcolor;
+    font-size: 15px;
+  }
+
+  & > .comment {
+    height: 30vh;
+  }
+
+  & > button {
+    outline: none;
+    background: none;
+    padding: 10px 5px;
+    border: none;
+    margin-bottom: 5px;
+  }
+}
   
 .footer {
   color: $addcolor;
-  width: 90vw;
   font-size: 10px;
-  text-align: center;
   position: absolute;
-  bottom: 10vh;
-  padding: 0 5vw;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
 
   @media (min-width: 960px) {
-    display: none;
+    // display: none;
   }
 }

@@ -20,7 +20,8 @@ class Item {
   }
 
   calcValue() {
-    return (Math.floor((this.width * this.height * this.quantity * 350)/100)+1)*100;
+    var val = ((this.width/100) * (this.height/100) * this.quantity * 350);
+    return (Math.floor(val / 20) * 20) + (val % 20 > 0 ? 20 : 0);
   }
 
 }
@@ -30,7 +31,12 @@ class Order {
   constructor() {
       this.items = new Map();
       this.value = 0;
-      this.id = `${new Date().toLocaleDateString()}/${new Date().toLocaleTimeString()}/${Math.floor(Math.random()*1000000)}`
+      this.id = `${new Date().toLocaleDateString()}.${new Date().toLocaleTimeString()}`;
+      this.status = "open";
+  }
+
+  calcValue() {
+    this.value = this.getValue();
   }
 
   addItem(item) {
@@ -43,6 +49,14 @@ class Order {
 
   editItem(id, height, width, quantity) {
       this.items.get(id*1).edit(height, width, quantity);
+  }
+
+  setStatus(status) {
+    this.status = status;
+  }
+
+  getStatus() {
+    return this.status;
   }
 
   getValue() {
@@ -62,7 +76,9 @@ class Order {
   }
 
   getSummary() {
+    this.calcValue();
     this.items = map_to_object(this.getItems());
+    this.setStatus("closed");
     return this;
   }
 
@@ -74,8 +90,9 @@ const order = new Order();
 
 
 let btn = document.querySelector('form #addbtn');
-const submitFormBtns = document.querySelectorAll(".order"); 
+const submitFormBtn = document.querySelector(".order"); 
 let summary = document.getElementsByClassName('price');
+const form = document.querySelector('form');
 
 
 //Form validation, return true when incorrect
@@ -172,18 +189,39 @@ function map_to_object(map) {
   return out
 }
 
-submitFormBtns.forEach(e => e.addEventListener("click", () => {
+submitFormBtn.addEventListener("click", () => {
+
   const inputs = document.querySelectorAll("form > div > input");
-  const items = document.querySelectorAll("form > div");
 
   if (inputs.length == 3) return alert("Aby złożyć zamówienie dodaj min. 1 front.");
   for (let i = 3; i < inputs.length; i++) {
-      if (inputs[i].value <= 0) return alert(`Nieprawidłowa wartość frontu!`);
+    if (inputs[i].value <= 0) return alert(`Nieprawidłowa wartość frontu!`);
+  }  
+
+  if (order.getStatus() == "open") {
+    document.getElementById("order-info").classList.remove("nodisplay");
+    document.querySelector(".exit").classList.add("nodisplay");
+    document.querySelector(".back").classList.remove("nodisplay");
+    submitFormBtn.children[0].innerHTML = "złóż zamówienie";
+    order.setStatus("final")
+    
+    
+    document.querySelector(".back").addEventListener("click", () => {
+      document.getElementById("order-info").classList.add("nodisplay");
+      document.querySelector(".back").classList.add("nodisplay");
+      document.querySelector(".exit").classList.remove("nodisplay");
+      submitFormBtn.children[0].innerHTML = "kontynuuj";
+      order.setStatus("open");
+    })
+
+    return;
   }
 
+  if (order.getStatus() == "final") {
+    if (!form.checkValidity()) return alert("Prosimy o podanie wymaganych informacji");
+    document.getElementById("data").value = JSON.stringify(order.getSummary());
+    document.querySelector("form").submit();
+  }
 
-  document.getElementById("order-num").value = order.getId();
-  document.getElementById("data").value = JSON.stringify(order.getSummary());
-  document.querySelector("form").submit();
-}));
+});
 
