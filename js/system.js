@@ -31,7 +31,7 @@ class Order {
   constructor() {
       this.items = new Map();
       this.value = 0;
-      this.id = `${new Date().toLocaleDateString()}/${new Date().toLocaleTimeString()}/${Math.floor(Math.random()*1000000)}`;
+      this.id = `${new Date().toLocaleDateString()}.${new Date().toLocaleTimeString()}`;
       this.status = "open";
   }
 
