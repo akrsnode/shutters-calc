@@ -40,13 +40,13 @@ $header_client .= "Reply-To: $szafawawa \r\n";
 $list_items = "";
 
 foreach($order->items as $item) {
-  $list_items .= "<tr><td>$item->height m</td><td>$item->width m</td><td>$item->quantity</td><td>$item->value zł</td></tr>\r\n";
+  $list_items .= "<tr><td>$item->height cm</td><td>$item->width cm</td><td>$item->quantity</td><td>$item->value zł</td></tr>\r\n";
 }
 
 $email_body = "<html>
     <body style=\"font-family: sans-serif; \">
         <div style=\"padding: 10%; border: 10px solid #111;\">
-            <center><img width=\"200px\" src=\"http://szafawawa.pl/wp-content/uploads/2019/05/logo-circle-1023x1024.png\"></center>
+            <center><img style=\"width: 200px; margin-bottom: 10px\" src=\"http://szafawawa.pl/wp-content/uploads/2019/05/logo-circle-1023x1024.png\"></center>
             <h1>Zamówienie nr. $order->id</h1>
             <p>Zamówienie jest w trakcie przetwarzania, niebawem poinformujemy Cię o jego akceptacji.</p>
             <h2 style=\"padding-top: 3rem\">Twoje zamówienie:</h2>
@@ -62,7 +62,7 @@ $email_body = "<html>
             <p style=\"font-size: 20px; font-weight: 800; text-align: center\">Suma: $order->value zł</p>
             <h2>Informace dodatkowe:</h2>
             <p>$comment</p>
-            <p style=\"text-align: center; font-size: 15px; padding-top: 5rem; color: darkgray\">Dziękujemy za wybranie naszych ażurów 😀</p>
+            <p style=\"text-align: center; font-size: 15px; padding-top: 5rem; color: darkgray\">Dziękujemy za wybranie naszych ażurów</p>
         </div>
     </body>
 </html>";

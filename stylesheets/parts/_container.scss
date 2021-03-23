@@ -59,13 +59,13 @@
 }
 
 .listwrapper {
-  .width {
+  .height {
     grid-column: 1 / 2;
   }
   .cross {
     grid-column: 2 / 3;
   }
-  .height {
+  .width {
     grid-column: 3 / 4;
   }
   .quantity {

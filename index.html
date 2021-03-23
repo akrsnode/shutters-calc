@@ -11,8 +11,9 @@
         <h1>Jak dodać wymiary frontów?</h1>
         <span id="closebtn"><svg xmlns="http://www.w3.org/2000/svg" width="14.142" height="14.142" viewBox="0 0 14.142 14.142"><defs><style>.a{fill:#fff;stroke:#707070;}.b{stroke:none;}.c{fill:none;}</style></defs><g transform="translate(-317.929 -20.929)"><g class="a" transform="translate(317.929 22.343) rotate(-45)"><rect class="b" width="2" height="18"/><rect class="c" x="0.5" y="0.5" width="1" height="17"/></g><g class="a" transform="translate(330.657 20.929) rotate(45)"><rect class="b" width="2" height="18"/><rect class="c" x="0.5" y="0.5" width="1" height="17"/></g></g></svg></span>
         <svg xmlns="http://www.w3.org/2000/svg" width="231.64" height="300.91" viewBox="0 0 183.374 236.411"><defs><style>.a,.b{fill:none;stroke:#000;stroke-miterlimit:10;}.b{stroke-width:0.71px;}.c{fill:#707070;font-size:12px;font-family:Roboto-Bold, Roboto;font-weight:700;}</style></defs><g transform="translate(-71 -104.589)"><g transform="translate(122 105.089)"><rect class="a" width="131.874" height="213.532"/><rect class="b" width="1.109" height="213.532" transform="translate(11.022)"/><rect class="b" width="1.109" height="213.532" transform="translate(120.15)"/><rect class="b" width="108.013" height="3.064" transform="translate(12.131 16.536)"/><rect width="108.013" height="1.021" transform="translate(12.131 26.555)"/><rect width="108.013" height="1.021" transform="translate(12.131 34.526)"/><rect width="108.013" height="1.021" transform="translate(11.93 42.502)"/><rect width="108.013" height="1.021" transform="translate(12.131 50.479)"/><rect width="108.013" height="1.021" transform="translate(11.93 58.455)"/><rect width="108.013" height="1.021" transform="translate(12.131 66.432)"/><rect width="108.013" height="1.021" transform="translate(12.131 74.59)"/><rect width="108.013" height="1.021" transform="translate(12.131 83.287)"/><rect width="108.013" height="1.021" transform="translate(11.93 91.646)"/><rect width="108.013" height="1.021" transform="translate(11.93 99.623)"/><rect width="108.013" height="1.021" transform="translate(11.93 107.324)"/><rect width="108.013" height="1.021" transform="translate(12.131 116.209)"/><rect width="108.013" height="1.021" transform="translate(12.131 124.035)"/><rect width="108.013" height="1.021" transform="translate(12.131 131.999)"/><rect width="108.013" height="1.021" transform="translate(12.131 140.358)"/><rect width="108.013" height="1.021" transform="translate(12.131 148.516)"/><rect width="108.013" height="1.021" transform="translate(12.131 156.675)"/><rect width="108.013" height="1.021" transform="translate(11.58 164.432)"/><rect width="108.013" height="1.021" transform="translate(12.131 172.189)"/><rect width="108.013" height="1.021" transform="translate(11.93 180.767)"/><rect width="108.013" height="1.021" transform="translate(12.131 188.625)"/><rect width="108.013" height="1.021" transform="translate(11.93 19.086)"/></g><text class="c" transform="translate(188 338)"><tspan x="-28.225" y="0">Szerokość</tspan></text><text class="c" transform="translate(94 203)"><tspan x="-22.122" y="0">Długość</tspan></text></g></svg>
-        <p><strong>Szerokość</strong> i <strong>wysokość</strong> podana w metrach.</p>
-        <p><i>na przykład:  36.6 cm -> 0.366 m</i></p>
+        <p><strong>Szerokość</strong> i <strong>wysokość</strong> podana w centymetrach.</p>
+        <p><i>na przykład:  366 mm -> 36.6 cm</i></p>
+        <p><i>2.7 m -> 270 cm</i></p>
         <p>Aby fronty pasowały do wnęki należy zmniejszyć wymiar o 4 mm.</p>
         <p>Jeśli napotkałeś na problem lub masz jakieś trudności z naszym systemem zapraszamy do <a class="hyperlink" href="http://szafawawa.pl/kontakt/">kontaktu</a>.</p>
     </div>
@@ -21,18 +22,18 @@
         <div class="fatline"></div>
         <div class="listwrapper">
             <div class="description">
-                <a class="width row-1">Długość</a>
-                <a class="height row-1">Szerokość</a>
+                <a class="height row-1">Wysokość</a>
+                <a class="width row-1">Szerokość</a>
                 <a class="quantity row-1">Ilość</a>
                 <a class="addbtn row-1" id="helpbtn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 64 64"><defs><style>.aa,.dd{fill:white;}.aa{stroke:#707070;stroke-width:5px;}.bb{fill:#707070;font-size:50px;font-family:Roboto-Bold, Roboto;font-weight:700;}.cc{stroke:none;}</style></defs><g transform="translate(-138 -67)"><g class="aa" transform="translate(138 67)"><circle class="cc" cx="32" cy="32" r="32"/><circle class="dd" cx="32" cy="32" r="29.5"/></g><text class="bb" transform="translate(158 116)"><tspan x="0" y="0">?</tspan></text></g></svg></a>
             </div>
             <form method="POST" name="frontyForm" action="fronty-form.php" id="elementList" class="elementlist">
                 <div id="0" class="element">
-                    <input id="width" name="width" class="width" type="number" min="" max="" step="0.001" placeholder="0.0m">
+                    <input id="height" name="height" class="height" type="number" type="number" min="10" max="275" step="0.1" placeholder="0.0 cm">
                     <svg class="cross" xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10">
                         <path id="Path_1" data-name="Path 1" d="M6.193-7.581l2.171-2.985H12.05l-3.674,4.9,3.829,5.1h-3.7l-2.3-3.142L3.915-.566H.205l3.829-5.1-3.662-4.9h3.7Z" transform="translate(-0.205 10.566)"/>
-                    </svg>                      
-                    <input id="height" name="height" class="height" type="number" type="number" min="" max="" step="0.001" placeholder="0.0m">
+                    </svg>
+                    <input id="width" name="width" class="width" type="number" min="10" max="68" step="0.1" placeholder="0.0 cm">                   
                     <input id="quantity" name="quantity" class="quantity" type="number" min="1" step="1" placeholder="0" onchange="floorQuantity(event)">
                     <button id="addbtn" class="addbtn" type="button">Dodaj</button>
                 </div>

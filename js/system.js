@@ -20,7 +20,7 @@ class Item {
   }
 
   calcValue() {
-    var val = (this.width * this.height * this.quantity * 350);
+    var val = ((this.width/100) * (this.height/100) * this.quantity * 350);
     return (Math.floor(val / 20) * 20) + (val % 20 > 0 ? 20 : 0);
   }
 
