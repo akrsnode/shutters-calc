@@ -8,7 +8,7 @@
 .help {
   position: absolute;
   z-index: 1;
-  height: 100vh;
+  min-height: 100%;
   width: 100%;
   background-color: white;
   box-sizing: border-box;
@@ -35,6 +35,7 @@
   border: 6px solid $maincolor;
   height: 92vh;
   box-sizing: border-box;
+  background: white;
 
   @media (min-width: 960px) {
     padding: 75px;
@@ -183,10 +184,8 @@
     opacity: 1;
     transform: translate(0, 0px);
   }
+
   &:hover {
-    opacity: 0.7;
-  }
-  &:hover, &:focus {
     &:before {
       opacity: 0;
       transform: translate(0, 20px);

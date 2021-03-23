@@ -1,6 +1,10 @@
 body{
   margin: 0;
   height: 100vh;
+
+  @media (max-width: 960px) {
+    background-color: $maincolor;
+  }
 }
 
 //Additional CSS Classes

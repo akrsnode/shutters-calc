@@ -90,7 +90,7 @@ const order = new Order();
 
 
 let btn = document.querySelector('form #addbtn');
-const submitFormBtns = document.querySelectorAll(".order"); 
+const submitFormBtn = document.querySelector(".order"); 
 let summary = document.getElementsByClassName('price');
 const form = document.querySelector('form');
 
@@ -189,7 +189,7 @@ function map_to_object(map) {
   return out
 }
 
-submitFormBtns.forEach(e => e.addEventListener("click", () => {
+submitFormBtn.addEventListener("click", () => {
 
   const inputs = document.querySelectorAll("form > div > input");
 
@@ -202,6 +202,7 @@ submitFormBtns.forEach(e => e.addEventListener("click", () => {
     document.getElementById("order-info").classList.remove("nodisplay");
     document.querySelector(".exit").classList.add("nodisplay");
     document.querySelector(".back").classList.remove("nodisplay");
+    submitFormBtn.children[0].innerHTML = "złóż zamówienie";
     order.setStatus("final")
     
     
@@ -209,6 +210,7 @@ submitFormBtns.forEach(e => e.addEventListener("click", () => {
       document.getElementById("order-info").classList.add("nodisplay");
       document.querySelector(".back").classList.add("nodisplay");
       document.querySelector(".exit").classList.remove("nodisplay");
+      submitFormBtn.children[0].innerHTML = "kontynuuj";
       order.setStatus("open");
     })
 
@@ -216,11 +218,11 @@ submitFormBtns.forEach(e => e.addEventListener("click", () => {
   }
 
   if (order.getStatus() == "final") {
-    if (!form.checkValidity()) return;
+    if (!form.checkValidity()) return alert("Prosimy o podanie wymaganych informacji");
     document.getElementById("order-num").value = order.getId();
     document.getElementById("data").value = JSON.stringify(order.getSummary());
     document.querySelector("form").submit();
   }
 
-}));
+});
 
