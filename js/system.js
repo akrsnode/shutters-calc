@@ -219,7 +219,6 @@ submitFormBtn.addEventListener("click", () => {
 
   if (order.getStatus() == "final") {
     if (!form.checkValidity()) return alert("Prosimy o podanie wymaganych informacji");
-    document.getElementById("order-num").value = order.getId();
     document.getElementById("data").value = JSON.stringify(order.getSummary());
     document.querySelector("form").submit();
   }
