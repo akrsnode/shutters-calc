@@ -95,24 +95,21 @@ let summary = document.getElementsByClassName('price');
 const form = document.querySelector('form');
 
 
-//Form validation, return true when incorrect
+//Form validation
 const validateForm = (e) => {
-  const item = e.target.parentElement;
   const data = e.target.parentElement.children;
+  let validation = true;
+
   for(let i = 0; i < 4; i++) {
-      if(data[i].value <= 0 && i != 1) {
-          data[i].classList.add('errorborder');
+    if (i != 1) {
+      if(!data[i].checkValidity()) {
+          validation = false;
       } else {
-          data[i].classList.remove('errorborder');
       }
+    }
   }
-  if(data[0].value > 0 && data[2].value > 0 && data[3].value > 0) {
-      item.classList.remove("error")
-      return false;
-  } else {
-      item.classList.add("error")
-      return true;
-  }
+
+  return validation;
 }
 
 //Floor quantity value
@@ -139,7 +136,7 @@ const addEraseBtn = (element) => {
 
 //Change element
 const updateElement = (e) => {
-  if (validateForm(e)) return;
+  if (!validateForm(e)) return;
 
   const parent = e.target.parentElement;
   const values = [parent.children[0].value*1, parent.children[2].value*1, Math.floor(parent.children[3].value)];
@@ -154,7 +151,7 @@ const updateElement = (e) => {
 //Event listeners
 btn.addEventListener('click', (e) => {
 
-  if(validateForm(e)) return;
+  if(!validateForm(e)) return;
 
   const addItemForm = document.querySelector('form > div');
   const values = [addItemForm.children[0].value*1, addItemForm.children[2].value*1, addItemForm.children[3].value*1];
@@ -193,9 +190,11 @@ submitFormBtn.addEventListener("click", () => {
 
   const inputs = document.querySelectorAll("form > div > input");
 
+  console.log(inputs);
+
   if (inputs.length == 3) return alert("Aby złożyć zamówienie dodaj min. 1 front.");
   for (let i = 3; i < inputs.length; i++) {
-    if (inputs[i].value <= 0) return alert(`Nieprawidłowa wartość frontu!`);
+    if (!inputs[i].checkValidity()) return alert(`Nieprawidłowa wartość frontu!`);
   }  
 
   if (order.getStatus() == "open") {
