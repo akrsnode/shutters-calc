@@ -98,18 +98,17 @@ const form = document.querySelector('form');
 //Form validation
 const validateForm = (e) => {
   const data = e.target.parentElement.children;
-  let validation = true;
 
   for(let i = 0; i < 4; i++) {
     if (i != 1) {
-      if(!data[i].checkValidity()) {
-          validation = false;
-      } else {
+      if (data[i].value < 1) {
+        data[i].value = 0;
       }
+      if (!data[i].reportValidity()) return false;
     }
   }
 
-  return validation;
+  return true;
 }
 
 //Floor quantity value
@@ -189,8 +188,6 @@ function map_to_object(map) {
 submitFormBtn.addEventListener("click", () => {
 
   const inputs = document.querySelectorAll("form > div > input");
-
-  console.log(inputs);
 
   if (inputs.length == 3) return alert("Aby złożyć zamówienie dodaj min. 1 front.");
   for (let i = 3; i < inputs.length; i++) {
