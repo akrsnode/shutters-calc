@@ -33,7 +33,7 @@
   position: relative;
   padding: 20px;
   border: 6px solid $maincolor;
-  height: 92vh;
+  min-height: calc(100% - 60px);
   box-sizing: border-box;
   background: white;
 
