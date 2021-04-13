@@ -7,6 +7,10 @@ body{
   }
 }
 
+button {
+  outline: none;
+}
+
 //Additional CSS Classes
 .nodisplay {
   display: none !important;
@@ -22,4 +26,12 @@ body{
 
 .w-100 {
   width: 100% !important;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.light {
+  color: #ababab;
 }
