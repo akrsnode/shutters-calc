@@ -3,11 +3,8 @@
   width: 100%;
   height: 60px;
   z-index: 10;
-
-  @media (max-width: 960px) {
-    position: sticky;
-    bottom: 0;
-  }
+  position: fixed;
+  bottom: 0;
 
   .exit, .back {
     display: inline;
@@ -35,5 +32,7 @@
   @media (min-width: 960px) {
     width: 650px;
     margin: 0 auto;
+    left: 0;
+    right: 0;
   }
 }

@@ -8,6 +8,7 @@ if(!isset($_POST['submit']))
 
 $name = $_POST['name'];
 $visitor_email = $_POST['email'];
+$visitor_phone = $_POST['phone'];
 $comment = $_POST['add-info'];
 $order = json_decode($_POST['data']);
 
@@ -49,7 +50,13 @@ $email_body = "<html>
             <center><img style=\"width: 200px; margin-bottom: 10px\" src=\"http://szafawawa.pl/wp-content/uploads/2019/05/logo-circle-1023x1024.png\"></center>
             <h1>Zamówienie nr. $order->id</h1>
             <p>Zamówienie jest w trakcie przetwarzania, niebawem poinformujemy Cię o jego akceptacji.</p>
-            <h2 style=\"padding-top: 3rem\">Twoje zamówienie:</h2>
+            <h2 style=\"padding-top: 2rem\">Dane zamawiającego:</h2>
+            <ul>
+              <li>$name</li>
+              <li>$visitor_email</li>
+              <li>$visitor_phone</li>
+            </ul>
+            <h2 style=\"padding-top: 2rem\">Twoje zamówienie:</h2>
             <table style=\"width: 100%; text-align: center\">
               <tr>
                 <th>Wysokość</th>
@@ -66,6 +73,8 @@ $email_body = "<html>
         </div>
     </body>
 </html>";
+
+echo $email_body;
 
 // Function to validate against any email injection attempts
 function IsInjected($str)
