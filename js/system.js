@@ -12,6 +12,10 @@ class Item {
       return this.id;
   }
 
+  getBasicData() {
+    return `${this.height} x ${this.width} x ${this.quantity} szt.`;
+  }
+
   edit(height, width, quantity) {
       this.height = height;
       this.width = width;
@@ -80,6 +84,10 @@ class Order {
     this.items = map_to_object(this.getItems());
     this.setStatus("closed");
     return this;
+  }
+
+  getDataToCopy() {
+
   }
 
 }

@@ -44,6 +44,12 @@ foreach($order->items as $item) {
   $list_items .= "<tr><td>$item->height cm</td><td>$item->width cm</td><td>$item->quantity</td><td>$item->value zł</td></tr>\r\n";
 }
 
+$list_items_basic = "";
+
+foreach($order->items as $item) {
+  $list_items_basic .= "$item->height x $item->width x $item->quantity szt.\r\n";
+}
+
 $email_body = "<html>
     <body style=\"font-family: sans-serif; \">
         <div style=\"padding: 10%; border: 10px solid #111;\">
@@ -67,14 +73,26 @@ $email_body = "<html>
               $list_items
             </table>
             <p style=\"font-size: 20px; font-weight: 800; text-align: center\">Suma: $order->value zł</p>
-            <h2>Informace dodatkowe:</h2>
+            <h2>Informacje dodatkowe:</h2>
             <p>$comment</p>
+            <p style=\"text-align: center; border-top: 1px darkgray solid; max-width: 90%; margin: 1em auto; padding: 1em; color: darkgray;\">
+            W celu dodania usługi transportowej prosimy o informacje mailową.
+          </p>
             <p style=\"text-align: center; font-size: 15px; padding-top: 5rem; color: darkgray\">Dziękujemy za wybranie naszych ażurów</p>
         </div>
     </body>
 </html>";
 
-echo $email_body;
+$email_for_supplier = "<html>
+<body style=\"font-family: sans-serif\">
+  <div style=\"padding: 10px;\">
+    <p>Dzień dobry,</p>
+    <p>chciałbym zamówić fronty ażurowe w kolorze  :</p>
+    $list_items_basic
+  </div>
+</body>
+</html>";
+
 
 // Function to validate against any email injection attempts
 function IsInjected($str)
@@ -100,6 +118,7 @@ function IsInjected($str)
 }
 
 // Return to sent page
+mail($szafawawa, $email_subject, $email_for_supplier, $header_client);
 if (mail($szafawawa,$email_subject,$email_body,$headers) && mail($visitor_email,$email_subject,$email_body,$header_client)) {
   header("Location: form-sent.html");
   exit;
