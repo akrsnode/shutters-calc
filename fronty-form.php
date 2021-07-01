@@ -76,7 +76,7 @@ $email_body = "<html>
             <h2>Informacje dodatkowe:</h2>
             <p>$comment</p>
             <p style=\"text-align: center; border-top: 1px darkgray solid; max-width: 90%; margin: 1em auto; padding: 1em; color: darkgray;\">
-            W celu dodania usługi transportowej prosimy o informacje mailową.
+            W celu ustalenia transportu poza Warszawę prosimy o informacje mailową.
           </p>
             <p style=\"text-align: center; font-size: 15px; padding-top: 5rem; color: darkgray\">Dziękujemy za wybranie naszych ażurów</p>
         </div>
